@@ -1,0 +1,19 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .container {
+  
+    text-align: center;
+  }
+  .example-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+  }
+  
+  

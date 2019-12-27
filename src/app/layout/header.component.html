@@ -1,0 +1,25 @@
+
+
+<mat-toolbar class="menus" color="primary">
+ 
+  <mat-toolbar-row *appShowAuthed="false">
+
+      <a mat-button routerLink="/home" routerLinkActive="active"> Home </a>
+      <span class="example-spacer"></span>
+      <a mat-button routerLink="/login" routerLinkActive="active"> Log In <i class="material-icons">person</i></a>
+      <a mat-button  routerLink="/register" routerLinkActive="active"> Sign Up <i class="material-icons"> person_add</i></a>
+    </mat-toolbar-row>
+
+
+    <mat-toolbar-row *appShowAuthed="true">
+      <a mat-button routerLink="/home" routerLinkActive="active"> Home </a>
+      
+      <a mat-button routerLink="/country" routerLinkActive="active"> Countries</a>
+      <span class="example-spacer"></span>
+      <a mat-button  routerLink="/newuser" routerLinkActive="active" *ngIf="role == 2"> Add <i class="material-icons"> person_add</i></a>
+      <a mat-button (click)="logout()"> Logout <i class="material-icons">exit_to_app</i></a>
+   
+  </mat-toolbar-row>
+
+
+</mat-toolbar>
