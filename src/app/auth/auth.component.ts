@@ -68,7 +68,7 @@ userlog:Userlogin;
      this.user.roleId=1;
       this.userService
       .signup(this.user,this.authForm);
-      this.router.navigateByUrl('/');
+     
     }else{
       this.userlog={} as Userlogin;
       this.isSubmitting = true;
@@ -81,7 +81,7 @@ userlog:Userlogin;
       this.userService
       .signin(this.userlog);
       
-      this.router.navigateByUrl('/');
+     
 
     }
 

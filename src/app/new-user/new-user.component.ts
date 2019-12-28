@@ -58,7 +58,7 @@ userlog:Userlogin;
      }
      
      this.userService
-      .signup(this.user,this.authForm);
+      .signupNew(this.user,this.authForm);
      
       
       

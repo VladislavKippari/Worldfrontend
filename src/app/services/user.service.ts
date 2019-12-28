@@ -11,6 +11,7 @@ import { Userlogin } from '../user.model';
 import { map ,  distinctUntilChanged } from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -26,13 +27,13 @@ export class UserService {
       'Content-Type':'application/json'
     })
   };
-  error:string;
+ 
   /*/api/content/user*/
   constructor (
    private snack:CustomSnackbarService,
     private http: HttpClient,
-    private jwtService: JwtService
-    
+    private jwtService: JwtService,
+    private router: Router
   ) {}
 
   works(){
@@ -43,7 +44,24 @@ export class UserService {
     return this.http.post(this.url+'/api/auth/signup',newUser,{responseType:'text'}).subscribe(
       data => {
         console.log('POST Request is successful ', data);
-        this.error=data;
+       
+        
+        if(data==="User added!"){
+          this.snack.open(data,"Close",6000,'top','center');
+          this.router.navigateByUrl('/');
+        }else{
+          this.snack.open(data,"Close",6000,'top','center');
+        }
+      }, 
+      
+    );
+  }
+  signupNew(newUser:User,form:FormGroup)  {
+  
+    return this.http.post(this.url+'/api/auth/newuser',newUser,{responseType:'text'}).subscribe(
+      data => {
+        console.log('POST Request is successful ', data);
+        
         this.snack.open(data,"Close",6000,'top','center');
         if(data==="User added!"){
           form.reset();
@@ -53,15 +71,27 @@ export class UserService {
     );
   }
   signin(newUser:Userlogin)  {
+    
    
     return this.http.post(this.url+'/api/auth/signin',newUser,{responseType:'text'}).subscribe(
       data => {
         console.log('POST Request is successful ', data);
-        this.isAuthenticatedSubject.next(true);
-        newUser.roleId=JSON.parse(data as string).roleId;
-        this.currentUserSubject.next(newUser);
-        this.jwtService.saveToken(data);
+        
+        if(data.includes("Wrong username!") || data.includes("Invalid Password!")){
+         
 
+          this.snack.open(data,"Close",6000,'top','center');
+        }else{
+          this.snack.open("Success!","Close",3000,'top','center');
+          this.isAuthenticatedSubject.next(true);
+          newUser.roleId=JSON.parse(data as string).roleId;
+          this.currentUserSubject.next(newUser);
+          this.jwtService.saveToken(data);
+          this.router.navigateByUrl('/');
+        }
+     
+        
+       
         
       }
       
