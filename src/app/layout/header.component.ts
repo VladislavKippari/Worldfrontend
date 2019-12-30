@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  ReplaySubject } from 'rxjs';
-import { Userlogin } from '../user.model';
+import { ReplaySubject } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-layout-header',
@@ -15,27 +15,27 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-  ) {}
+  ) { }
 
-  currentUser: Userlogin;
+  currentUser: User;
 
   ngOnInit() {
- 
+
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
-        if(typeof this.userService.getCurrentUser().roleId !=='undefined'){
-          this.role=this.userService.getCurrentUser().roleId.toString();
-    
+        if (typeof this.userService.getCurrentUser().roleId !== 'undefined') {
+          this.role = this.userService.getCurrentUser().roleId.toString();
+
         }
-      
+
       }
     );
-    
 
-    
+
+
   }
-  logout(){  
+  logout() {
     this.userService.signout();
     this.router.navigateByUrl('/');
   }

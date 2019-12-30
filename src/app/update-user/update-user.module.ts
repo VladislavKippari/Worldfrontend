@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NewUserComponent } from './new-user.component';
+import { UpdateUserComponent } from './update-user.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
@@ -13,31 +13,31 @@ import { MatSnackBarModule } from '@angular/material';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatButtonToggleModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatSnackBarModule,
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatSnackBarModule,
 
-    RouterModule.forChild([{ path: '', component: NewUserComponent }])
+        RouterModule.forChild([{ path: '', component: UpdateUserComponent }])
 
-  ],
-  declarations: [
-    NewUserComponent
-  ],
-  providers: [
+    ],
+    declarations: [
+        UpdateUserComponent
+    ],
+    providers: [
 
-  ]
+    ]
 })
-export class NewUserModule { }
+export class UpdateUserModule { }

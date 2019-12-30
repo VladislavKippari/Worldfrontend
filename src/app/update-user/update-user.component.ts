@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 
@@ -6,37 +7,40 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
+import { JwtService } from '../services/jwt.service';
 
 @Component({
-  selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.css']
 })
-export class NewUserComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
   authType: String = '';
   title: String = '';
   error: String;
   isSubmitting = false;
-  authForm: FormGroup;
+  updateForm: FormGroup;
+  password: string;
+  username: string;
+  email: string;
   user: User;
   hide: boolean;
-  wady: string;
-  userlog: User;
-  constructor(private _snackBar: MatSnackBar, private route: ActivatedRoute,
+  constructor(private jwt: JwtService, private _snackBar: MatSnackBar, private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder, ) {
-    this.authForm = this.fb.group({
+    this.updateForm = this.fb.group({
       'username': ['', Validators.required],
       'password': ['', Validators.required],
-      'email': ['', Validators.required],
-      'role': ['', Validators.required],
+      'email': ['', Validators.required]
+
     });
     this.hide = true;
 
   }
 
   ngOnInit() {
+    this.updateForm.setValue({ username: this.userService.getCurrentUser().name, password: this.userService.getCurrentUser().password, email: this.userService.getCurrentUser().email });
 
   }
   submitForm() {   //по нажатию кнопи в зависимости от логин или регистрация передаёт данные в метод из services/user.service.ts
@@ -46,19 +50,16 @@ export class NewUserComponent implements OnInit {
     this.user = {} as User;
     this.isSubmitting = true;
 
-    const credentials = this.authForm;
+    const credentials = this.updateForm;
 
     this.user.name = credentials.controls['username'].value;
     this.user.email = credentials.controls['email'].value;
     this.user.password = credentials.controls['password'].value;
-    if (credentials.controls['role'].value === 'Admin') {
-      this.user.roleId = 2;
-    } else {
-      this.user.roleId = 1;
-    }
+    this.user.id = this.userService.getCurrentUser().id;
+    console.log(this.user.roleId + " id");
+    this.userService.updateUser(this.user, this.updateForm);
 
-    this.userService
-      .signupNew(this.user, this.authForm);
+
 
 
 

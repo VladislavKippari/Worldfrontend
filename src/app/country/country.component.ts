@@ -10,19 +10,19 @@ import { Country } from 'src/app/country/country.model';
 })
 export class CountryComponent implements OnInit {
 
-  constructor(private service:CountryService) { }
+  constructor(private service: CountryService) { }
 
-country: Country[]=[];
-error:any;
+  country: Country[] = [];
+  error: any;
 
 
   ngOnInit() {
     this.getAllData();
   }
-  getAllData(){
+  getAllData() {
     return this.service.getCountryList().subscribe(
-      country=> { this.country=country['country'];console.log("data"+country);},
-      error=>{this.error=error.message;console.log("err"+error);});
+      country => { this.country = country['country']; console.log("data" + country); },
+      error => { this.error = error.message; console.log("err" + error); });
   }
 }
 

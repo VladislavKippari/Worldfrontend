@@ -1,68 +1,61 @@
+<div class="container page">
+  <div class="row">
 
-<div class="auth-page">
-    <div class="container page">
-      <div class="row">
-  
-        <div >
-          <mat-card class="example-card" >
-            <mat-card-header>
-              <mat-card-title>New User</mat-card-title>
-            </mat-card-header>
-          
-            <mat-card-content>
-          <form [formGroup]="authForm" (ngSubmit)="submitForm()"> 
-                <fieldset >
-                  <div class="example-container form-group" >
-                   
-                       <mat-form-field>
-                        <input  matInput formControlName="username"
-                        placeholder="Username"
-                        required
-                        type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="example-container form-group"> 
-                      <mat-form-field>
-                        <input  matInput formControlName="email"
-                        placeholder="Email" required
-                        type="text">
-                      </mat-form-field>
-                    </div>
-                 <div class="example-container form-group">
-                  
-                      <mat-form-field>
-                       
-                      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
-                      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="example-container form-group">
-                  
-                        <mat-form-field id="klean">
-                            <mat-label >Role</mat-label>
-                            <mat-select formControlName="role">
-                              <mat-option value="Admin">
-                                Admin
-                              </mat-option>
-                              <mat-option value="User">
-                                User
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                      </div>
-                    <button mat-raised-button color="primary" [disabled]="!authForm.valid"  type="submit">Insert</button>
-                    
-                
-                </fieldset>
-              </form>
-            </mat-card-content>
-          
-          </mat-card>
-        
-         
-     
-        </div>
-  
-      </div>
+    <div>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>New User</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+            <fieldset>
+              <div class="example-container form-group">
+
+                <mat-form-field>
+                  <input matInput formControlName="username" placeholder="Username" required type="text">
+                </mat-form-field>
+              </div>
+              <div class="example-container form-group">
+                <mat-form-field>
+                  <input matInput formControlName="email" placeholder="Email" required type="text">
+                </mat-form-field>
+              </div>
+              <div class="example-container form-group">
+
+                <mat-form-field>
+
+                  <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password"
+                    required>
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+              </div>
+              <div class="example-container form-group">
+
+                <mat-form-field id="klean">
+                  <mat-label>Role</mat-label>
+                  <mat-select formControlName="role">
+                    <mat-option value="Admin">
+                      Admin
+                    </mat-option>
+                    <mat-option value="User">
+                      User
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <button mat-raised-button color="primary" [disabled]="!authForm.valid" type="submit">Insert</button>
+
+
+            </fieldset>
+          </form>
+        </mat-card-content>
+
+      </mat-card>
+
+
+
     </div>
+
   </div>
+</div>

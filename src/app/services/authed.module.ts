@@ -24,13 +24,13 @@ import { ShowAuthedDirective } from './show-authed.directive';
   exports: [
 
     CommonModule,
- 
+
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
- 
+
     RouterModule,
     ShowAuthedDirective
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

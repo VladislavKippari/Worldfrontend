@@ -9,8 +9,8 @@ export class JwtService {
   }
 
   saveToken(token: String) {
-    window.localStorage['jwtToken'] =  JSON.parse(token as string).token;
-  
+    window.localStorage['jwtToken'] = JSON.parse(token as string).token;
+
   }
 
   destroyToken() {

@@ -14,12 +14,12 @@ export class ShowAuthedDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     private userService: UserService,
     private viewContainer: ViewContainerRef
-  ) {}
+  ) { }
 
   condition: boolean;
 
   ngOnInit() {
-      
+
     this.userService.isAuthenticated.subscribe(
       (isAuthenticated) => {
         if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
