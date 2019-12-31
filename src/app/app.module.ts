@@ -29,6 +29,8 @@ import { CustomSnackbarService } from './services/custom-snackbar.service';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MatSnackBarModule } from "@angular/material";
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { AuthGuard } from './services/auth-guard.service';
+
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent],
   imports: [
@@ -50,7 +52,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     MatSnackBarModule,
     MatSelectModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }, CountryService, UserService, JwtService, NoAuthGuard, CustomSnackbarService],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }, CountryService, UserService, JwtService, NoAuthGuard, CustomSnackbarService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

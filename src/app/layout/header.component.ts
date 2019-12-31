@@ -12,10 +12,16 @@ import { User } from '../user.model';
 })
 export class HeaderComponent implements OnInit {
   role: String = '';
+  temp:string;
   constructor(
     private userService: UserService,
     private router: Router,
-  ) { }
+  ) {this.temp=window.localStorage['roleid']||"false"
+    if(!this.temp.includes("false")){
+      this.role=JSON.parse(JSON.stringify(window.localStorage['roleid']))
+    }
+    
+    }
 
   currentUser: User;
 
@@ -25,19 +31,19 @@ export class HeaderComponent implements OnInit {
       (userData) => {
         this.currentUser = userData;
         if (typeof this.userService.getCurrentUser().roleId !== 'undefined') {
-          this.role = this.userService.getCurrentUser().roleId.toString();
+         this.role=JSON.parse(JSON.stringify(window.localStorage['roleid']));
 
         }
 
       }
     );
-
+   
 
 
   }
   logout() {
     this.userService.signout();
-    this.router.navigateByUrl('/');
+    
   }
 
 }

@@ -38,6 +38,7 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
 
+    this.authForm.reset();
   }
   submitForm() {   //по нажатию кнопи в зависимости от логин или регистрация передаёт данные в метод из services/user.service.ts
 

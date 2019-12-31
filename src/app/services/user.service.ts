@@ -20,7 +20,7 @@ export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-
+  user: User;
   url = 'http://localhost:5500';
   httpOptions = {
     headers: new HttpHeaders({
@@ -36,10 +36,26 @@ export class UserService {
     private router: Router
   ) { }
 
-  works() {
-    this.isAuthenticatedSubject.next(false);
+  works() { //при старте и обновлении приложения вызывается в app.component
+
+    if (this.jwtService.getToken()) {
+
+      window.localStorage['logged'] = true;
+      this.isAuthenticatedSubject.next(true);
+
+
+
+
+
+    } else {
+      this.isAuthenticatedSubject.next(false);
+
+
+
+    }
   }
-  signup(newUser: User, form: FormGroup) {
+
+  signup(newUser: User, form: FormGroup) { 
 
     return this.http.post(this.url + '/api/auth/signup', newUser, { responseType: 'text' }).subscribe(
       data => {
@@ -56,7 +72,7 @@ export class UserService {
 
     );
   }
-  signupNew(newUser: User, form: FormGroup) {
+  signupNew(newUser: User, form: FormGroup) {  //метод, который использует админ для добавления нового пользователя с ролью.
 
     return this.http.post(this.url + '/api/auth/newuser', newUser, { responseType: 'text' }).subscribe(
       data => {
@@ -87,10 +103,16 @@ export class UserService {
           newUser.roleId = JSON.parse(data as string).roleId;
           newUser.email = JSON.parse(data as string).email;
           newUser.id = JSON.parse(data as string).id;
+          window.localStorage['id'] = newUser.id;
+          window.localStorage['roleid'] = newUser.roleId;
+          window.localStorage['logged'] = true;
+          window.localStorage['name'] = JSON.parse(data as string).name;
+          window.localStorage['email'] = JSON.parse(data as string).email;
           this.currentUserSubject.next(newUser);
 
           this.jwtService.saveToken(data);
           this.router.navigateByUrl('/');
+
           console.log(this.currentUserSubject.value.name);
         }
 
@@ -104,34 +126,18 @@ export class UserService {
   signout() {
 
     this.jwtService.destroyToken();
-    // Set current user to an empty object
+
     this.currentUserSubject.next({} as User);
-    // Set auth status to false
+
     this.isAuthenticatedSubject.next(false);
+    window.localStorage.removeItem('logged');
+    window.localStorage.removeItem('roleid');
+    this.router.navigateByUrl('/');
   }
 
 
 
-
-
-
-  setAuth(user: User) {
-
-
-    // Set current user data into observable
-    this.currentUserSubject.next(user);
-    // Set isAuthenticated to true
-    this.isAuthenticatedSubject.next(true);
-  }
-
-  purgeAuth() {
-    // Remove JWT from localstorage
-    this.jwtService.destroyToken();
-    // Set current user to an empty object
-    this.currentUserSubject.next({} as User);
-    // Set auth status to false
-    this.isAuthenticatedSubject.next(false);
-  }
+ 
 
   updateUser(newUser: User, form: FormGroup) {
     console.log(newUser.id + " update");
@@ -151,7 +157,7 @@ export class UserService {
 
 
 
-  getCurrentUser(): User {
+  getCurrentUser(): User {  //для получения данных текущего пользователя, залогиненого
     return this.currentUserSubject.value;
   }
 

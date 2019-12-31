@@ -15,10 +15,28 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> {
+  ) {
+var temp=window.localStorage['roleid'] as string||"0";
+if(!temp.includes("0")){
+temp=JSON.parse(JSON.stringify(window.localStorage['roleid']));
 
-    return this.userService.isAuthenticated.pipe(take(1));
+}else{
+  temp="0";
+}
+    const userRole: string = temp;
+        const permission = route.data["permission"];
+        
+        let canActivate: boolean;
+
+        if (!permission) throw new Error('Permissions is not setup!');
+        if (!permission.only.length) throw new Error('Roles are not setup!');
+
+        canActivate = permission.only.includes(userRole);
+
+        if (!canActivate) this.router.navigate([permission.redirectTo]);
+
+        return canActivate;
 
   }
 }
-//забей
+//блокирует неавторизированному пользователю доступ к страницам. Смотри app-routing.module.ts.

@@ -68,7 +68,7 @@ export class AuthComponent implements OnInit {
       this.user.roleId = 1;
       this.userService
         .signup(this.user, this.authForm);
-
+       
     } else {
       this.userlog = {} as User;
       this.isSubmitting = true;
@@ -80,8 +80,7 @@ export class AuthComponent implements OnInit {
 
       this.userService
         .signin(this.userlog);
-
-
+      
 
     }
 

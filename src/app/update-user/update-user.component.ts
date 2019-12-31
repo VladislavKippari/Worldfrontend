@@ -31,7 +31,7 @@ export class UpdateUserComponent implements OnInit {
     private fb: FormBuilder, ) {
     this.updateForm = this.fb.group({
       'username': ['', Validators.required],
-      'password': ['', Validators.required],
+     
       'email': ['', Validators.required]
 
     });
@@ -40,7 +40,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateForm.setValue({ username: this.userService.getCurrentUser().name, password: this.userService.getCurrentUser().password, email: this.userService.getCurrentUser().email });
+   
+
+  
+    this.updateForm.setValue({ username:JSON.parse(JSON.stringify(window.localStorage['name'])), email: JSON.parse(JSON.stringify(window.localStorage['email'])) });
 
   }
   submitForm() {   //по нажатию кнопи в зависимости от логин или регистрация передаёт данные в метод из services/user.service.ts
@@ -54,7 +57,7 @@ export class UpdateUserComponent implements OnInit {
 
     this.user.name = credentials.controls['username'].value;
     this.user.email = credentials.controls['email'].value;
-    this.user.password = credentials.controls['password'].value;
+  
     this.user.id = this.userService.getCurrentUser().id;
     console.log(this.user.roleId + " id");
     this.userService.updateUser(this.user, this.updateForm);
