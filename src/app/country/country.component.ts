@@ -6,7 +6,7 @@ import { Country } from 'src/app/country/country.model';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
-  styleUrls: ['./country.component.scss']
+  styleUrls: ['./country.component.scss'],
 })
 export class CountryComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class CountryComponent implements OnInit {
 
   country: Country[] = [];
   error: any;
-
+  dataSource = this.country;
 
   ngOnInit() {
     this.getAllData();

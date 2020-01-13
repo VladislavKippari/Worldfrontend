@@ -30,9 +30,11 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { MatSnackBarModule } from "@angular/material";
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { NewCityComponent } from './new-city/new-city.component';
+import { UpdateCityComponent } from './update-city/update-city.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, NewCityComponent, UpdateCityComponent],
   imports: [
 
     BrowserModule,
