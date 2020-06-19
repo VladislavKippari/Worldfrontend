@@ -1,6 +1,6 @@
 npm install
 
-Если ошибка Could not find module “@angular-devkit/build-angular”
+If error "Could not find module “@angular-devkit/build-angular”"
 >npm i @angular-devkit/build-angular
 
 username:Admin
