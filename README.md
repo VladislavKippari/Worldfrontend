@@ -13,7 +13,6 @@ If error "Could not find module “@angular-devkit/build-angular”"
 * In terminal:
   > npm start
 
-Created user with migrations 
-username:Admin
-
-password:123456
+Seeded user  on backend that you can use for creating users with different roles
+  username:Admin
+  password:123456
