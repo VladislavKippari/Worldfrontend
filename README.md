@@ -1,4 +1,4 @@
-#### You can find REST backend on https://github.com/VladislavKippari/RESTful-project
+#### You can find REST Express.js backend on https://github.com/VladislavKippari/RESTful-project
 
 #### 1. Project setup
 * Clone project:
