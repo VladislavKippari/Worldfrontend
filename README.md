@@ -14,6 +14,6 @@ If error "Could not find module “@angular-devkit/build-angular”"
   > npm start
 
 Seeded user  on backend that you can use for creating users with different roles
-  username:Admin
+  -username:Admin
   
-  password:123456
+  -password:123456
