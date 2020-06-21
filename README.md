@@ -1,4 +1,4 @@
-## Angular SPA JWT authentication based on REST API backend that you can find on https://github.com/VladislavKippari/RESTful-project
+
 #### 1. Project setup
 * Clone project:
   > git clone https://github.com/VladislavKippari/Worldfrontend.git
