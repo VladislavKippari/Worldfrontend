@@ -21,3 +21,5 @@ Seeded user  on backend that you can use for creating users with different roles
 1. Open two visual studio code window
 2. First window for frontend
 3. Second window for backend
+# Heroku cloud app link
+- https://frontendjwt.herokuapp.com/
