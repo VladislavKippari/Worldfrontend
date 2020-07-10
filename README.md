@@ -9,7 +9,7 @@
 If error "Could not find module “@angular-devkit/build-angular”"
 >npm i @angular-devkit/build-angular  
 
-* If you have your own localhost port change variable apiUrl  in file:
+* If you have your own localhost port on back-end change variable apiUrl  in file:
 >src/environmets/enironments.ts
 
 
