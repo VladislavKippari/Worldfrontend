@@ -7,7 +7,7 @@ import { JwtService } from './jwt.service';
 import { NewUserComponent } from '../new-user/new-user.component';
 import { CustomSnackbarService } from './custom-snackbar.service';
 import { User } from '../user.model';
-
+import { environment } from '../../environments/environment';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
@@ -21,7 +21,7 @@ export class UserService {
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
   user: User;
-  url = 'http://localhost:5500';
+  url = environment.apiUrl;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
