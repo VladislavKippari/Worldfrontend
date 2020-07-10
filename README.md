@@ -8,6 +8,8 @@
 
 If error "Could not find module “@angular-devkit/build-angular”"
 >npm i @angular-devkit/build-angular
+Change variable apiUrl according to your back-end localhost in file:
+>src/environmets/enironments.ts
 
 
 #### 2. Run project
