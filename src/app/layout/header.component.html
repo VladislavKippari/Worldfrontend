@@ -1,26 +1,43 @@
-<mat-toolbar class="menus" color="primary">
+<mat-toolbar fxFlex fxLayout class="menus" color="primary">
+ 
 
-  <mat-toolbar-row *appShowAuthed="false">
 
-    <a mat-button routerLink="/home" routerLinkActive="active"> Home </a>
-    <span class="example-spacer"></span>
-    <a mat-button routerLink="/login" routerLinkActive="active"> Log In <i class="material-icons">person</i></a>
-    <a mat-button routerLink="/register" routerLinkActive="active"> Sign Up <i class="material-icons">
+  <mat-toolbar-row *appShowAuthed="false"  >
+    
+
+    <a mat-button routerLink="/home" routerLinkActive="active" class="homebtn"> Home </a>
+    <div fxFlex fxLayout fxLayoutAlign="end">
+      <div fxLayout fxLayoutGap="5px">
+    <span class="flexExpand"></span>
+    <a mat-button routerLink="/login" routerLinkActive="active" class="authzone"> Sign In <i class="material-icons">person</i></a>
+    <a mat-button routerLink="/register" routerLinkActive="active" class="authzone"> Sign Up <i class="material-icons">
         person_add</i></a>
+        </div>
+      </div>
   </mat-toolbar-row>
 
 
   <mat-toolbar-row *appShowAuthed="true">
-    <a mat-button routerLink="/home" routerLinkActive="active"> Home </a>
+    <div fxLayout fxLayoutGap="5px">
+    <a mat-button routerLink="/home" routerLinkActive="active" class="homebtn"> Home </a>
 
     <a mat-button routerLink="/country" routerLinkActive="active"> Countries</a>
-    <a mat-button routerLink="/newcity" routerLinkActive="active"> Add city</a>
-    <span class="example-spacer"></span>
-    <a mat-button routerLink="/updateuser" routerLinkActive="active"> Update user <i class="material-icons">build</i></a>
-    <a mat-button routerLink="/newuser" routerLinkActive="active" *ngIf="role == 2"> Add <i class="material-icons">
+    
+  </div>
+    <div fxFlex fxLayout fxLayoutAlign="end"  fxHide.gt-sm>
+    
+      <button mat-icon-button (click)="onToggleSidenav()" >
+          <mat-icon>menu</mat-icon>
+      </button>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
+    <div fxLayout fxLayoutGap="5px">
+    <a   mat-button routerLink="/updateuser" routerLinkActive="active"> Update user <i class="material-icons">build</i></a>
+    <a  mat-button routerLink="/newuser" routerLinkActive="active" *ngIf="role == 2"> Add user <i class="material-icons">
         person_add</i></a>
     <a mat-button (click)="logout()"> Logout <i class="material-icons">exit_to_app</i></a>
-
+  </div>
+</div>
   </mat-toolbar-row>
 
 
