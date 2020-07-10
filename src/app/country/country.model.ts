@@ -15,4 +15,6 @@ export interface Country {
      headofstate: string;
      capital: number;
      code2: string;
+     capitaltown: {capitalname: string};
 }
+

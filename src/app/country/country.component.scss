@@ -1,7 +1,63 @@
 .cent{
     text-align: center;
 }
-.mat-linkcolor{
+table {
+    width: 100%;
+    min-width: 540px;
+  }
+  mat-paginator{
+    min-width: 540px;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    
+  }
+  
+  td, th {
+    width: 10%;
+   
+  }
+  th{
     background-color: mediumturquoise;
-    color: black;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .headingg{
+    background-color: mediumturquoise;
+    margin-bottom: 10px;
+    text-align: center;
+
+  }
+  .table {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+  .filtering{
+    margin-top: 10px;
+    margin-left: 20px;
+    
+  }
+  
+  .mat-icon {
+    font-size: 15px;
+  }
+.editbtn{
+  background-color: #4CAF50;
+  color:white;
+  width:70px;
+  margin-top: 3px;
+margin-bottom: 3px;
+}
+.delete{
+  width:70px;
+margin-right: 4px;
+margin-top: 3px;
+margin-bottom: 3px;
+}.example-full-width {
+  width: 100% !important;
+}
+.updatebtn{
+ background-color:  #800020;
+ color:white;
 }
