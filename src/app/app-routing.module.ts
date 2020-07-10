@@ -56,19 +56,8 @@ const routes: Routes = [
                 redirectTo: 'home'
             }
         }  
-    },
-    {
-        path: 'newcity',
-        loadChildren: './new-city/new-city.module#NewCityModule',
-        canActivate: [AuthGuard],
-        data: {
-            permission: {
-                only: ['1', '2'],
-                redirectTo: 'home'
-            }
-        }  
-       
     }
+    
 
 ];
 @NgModule({
