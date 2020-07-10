@@ -9,15 +9,9 @@ import { MatSelectModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtService } from './services/jwt.service';
-import { RouterModule } from '@angular/router';
-import { CountryComponent } from './country/country.component';
 import { FooterComponent } from './layout/footer.component';
 import { HeaderComponent } from './layout/header.component';
 import { SharedModule } from './services/authed.module';
-import { AuthModule } from './auth/auth.module';
-import { AuthComponent } from './auth/auth.component';
-import { ShowAuthedDirective } from './services/show-authed.directive';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './services/interceptor';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
@@ -26,15 +20,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { CustomSnackbarService } from './services/custom-snackbar.service';
-import { NewUserComponent } from './new-user/new-user.component';
 import { MatSnackBarModule } from "@angular/material";
-import { UpdateUserComponent } from './update-user/update-user.component';
 import { AuthGuard } from './services/auth-guard.service';
-import { NewCityComponent } from './new-city/new-city.component';
 import { UpdateCityComponent } from './update-city/update-city.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogContent} from './country/country.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, NewCityComponent, UpdateCityComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, UpdateCityComponent, SidenavListComponent,DialogContent],
   imports: [
 
     BrowserModule,
@@ -52,8 +47,11 @@ import { UpdateCityComponent } from './update-city/update-city.component';
     MatButtonToggleModule,
     MatCardModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    FlexLayoutModule,
+    MatDialogModule
   ],
+  entryComponents: [ DialogContent],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }, CountryService, UserService, JwtService, NoAuthGuard, CustomSnackbarService,AuthGuard],
   bootstrap: [AppComponent]
 })
