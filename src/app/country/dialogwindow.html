@@ -1,0 +1,41 @@
+
+<h2 mat-dialog-title class="headingg">Change data</h2>
+<mat-dialog-content class="mat-typography"  >
+  
+  
+<p>
+  
+<mat-form-field ngDefaultControl [(ngModel)]="local_data.name" >
+  <mat-label>Name</mat-label>
+  <textarea matInput value="{{local_data.name}}"></textarea>
+</mat-form-field>
+</p>
+<p>
+<mat-form-field ngDefaultControl [(ngModel)]="local_data.continent">
+  <mat-label>Continent</mat-label>
+  <textarea matInput value="{{local_data.continent}}"></textarea>
+</mat-form-field>
+</p>
+<p>
+  <mat-form-field ngDefaultControl [(ngModel)]="local_data.surfacearea">
+    <mat-label>Surfacearea</mat-label>
+    <textarea matInput value="{{local_data.surfacearea}}"></textarea>
+  </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field ngDefaultControl [(ngModel)]="local_data.population">
+      <mat-label>Population</mat-label>
+      <textarea matInput value="{{local_data.population}}"></textarea>
+    </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field ngDefaultControl [(ngModel)]="local_data.capitaltown.capitalname">
+        <mat-label>Capital</mat-label>
+        <textarea matInput value="{{local_data.capitaltown.capitalname}}"></textarea>
+      </mat-form-field>
+      </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button ngDefaultControl   mat-button mat-button (click)="doAction()" class="updatebtn" cdkFocusInitial>Update</button>
+</mat-dialog-actions>
