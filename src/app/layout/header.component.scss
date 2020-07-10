@@ -1,11 +1,32 @@
 
 
 .menus  a:hover {
-    border-bottom: 3px solid red;
+  background: #800020;
+    
   }
+
+  
   .active{
-    border-bottom: 3px solid red;
+
+    background: #800020;
   }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+  .homebtn{
+    font-size: 25px;
+    margin-left: 3px;
+}
+.authzone{
+  background-color: #4CAF50;
+  
+  
+}
+.menus{
+  min-height: 56px !important;
+  height:56px !important;
+  min-width: 555px;
+}
+.mat-toolbar-row{
+  height:56px !important;
+}
+mat-toolbar-row{
+  padding: 0 !important;
+}
