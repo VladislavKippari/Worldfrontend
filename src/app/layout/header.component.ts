@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { User } from '../user.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() public sidenavToggle = new EventEmitter();
   role: String = '';
   temp:string;
   constructor(
@@ -26,7 +27,6 @@ export class HeaderComponent implements OnInit {
   currentUser: User;
 
   ngOnInit() {
-
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
@@ -46,4 +46,11 @@ export class HeaderComponent implements OnInit {
     
   }
 
+
+
+ 
+  public onToggleSidenav = () => { 
+   
+    this.sidenavToggle.emit();
+  }
 }
