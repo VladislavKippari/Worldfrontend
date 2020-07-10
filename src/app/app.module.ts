@@ -22,14 +22,13 @@ import { MatCardModule } from '@angular/material/card';
 import { CustomSnackbarService } from './services/custom-snackbar.service';
 import { MatSnackBarModule } from "@angular/material";
 import { AuthGuard } from './services/auth-guard.service';
-import { UpdateCityComponent } from './update-city/update-city.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogContent} from './country/country.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, UpdateCityComponent, SidenavListComponent,DialogContent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, SidenavListComponent,DialogContent],
   imports: [
 
     BrowserModule,
