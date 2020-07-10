@@ -15,5 +15,23 @@
     margin-right:auto;
     text-align: center;
   }
-  
-  
+  mat-card{
+    min-width: 250px;
+}
+.heading{
+  background-color: #800020;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  resize: both;
+margin-left:2px;
+margin-right: 2px;
+
+}
+.title{
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+}
