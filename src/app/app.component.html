@@ -1,10 +1,11 @@
+<app-layout-header (sidenavToggle)="sidenav.toggle()"></app-layout-header>
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation" position="end"  >
         <app-sidenav-list  (sidenavClose)="sidenav.close()"></app-sidenav-list>
     </mat-sidenav>
+
 <mat-sidenav-content>
-    <app-layout-header (sidenavToggle)="sidenav.toggle()"></app-layout-header>
     <main>
         <router-outlet></router-outlet>
         <app-layout-footer></app-layout-footer>
